@@ -24,8 +24,8 @@ with open(pdf_file,'rb') as input_file:
         pdf_page.add_transformation(rot)
         # pdf_page.mediabox.upper_right = (pdf_page.mediabox.right*2,pdf_page.mediabox.top*2)
 
-        pdf_page.cropbox = RectangleObject([-290, 30, 0,470])
-        pdf_page.mediabox = RectangleObject([-290, 30, 0,470])
+        pdf_page.cropbox = RectangleObject([-290, 40, 0,500])
+        pdf_page.mediabox = RectangleObject([-290, 40, 0,500])
 
         output = PyPDF2.PdfWriter()
         output.add_page(pdf_page)
