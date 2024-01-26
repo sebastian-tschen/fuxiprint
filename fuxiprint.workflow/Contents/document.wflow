@@ -61,8 +61,12 @@
 					<key>COMMAND_STRING</key>
 					<string>for f in "$@"
 do
-	/Users/sebastian/proj/fuxifypdf/venv/bin/python /Users/sebastian/proj/fuxifypdf/mergeit.py $f /Users/sebastian/proj/fuxifypdf/C6Vorlage.pdf $f.merged.pdf 2&gt; ~/Downloads/foo.err
-    lpr -P Brother_HL_L3230CDW_series -o fit-to-page -o media=Custom.162x114mm $f.merged.pdf
+	base="$(basename $f .pdf)"
+	wdir="$(dirname $f)"
+	merged_pdf=$wdir/$base.merged.pdf
+		
+~/proj/fuxifypdf/venv/bin/python ~/proj/fuxifypdf/mergeit.py $f ~/proj/fuxifypdf/C6Vorlage.pdf $merged_pdf &gt; $wdir/$base.out 2&gt; $wdir/$base.err
+    #lpr -P Brother_HL_L3230CDW_series -o fit-to-page -o media=Custom.162x114mm $merged_pdf &gt;&gt; $wdir/$base.out 2&gt;&gt; $wdir/$base.err
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -180,7 +184,7 @@ done</string>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:361.000000</string>
+				<string>309.000000:632.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
